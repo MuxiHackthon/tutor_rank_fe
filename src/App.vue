@@ -1,32 +1,38 @@
 <template>
-	<div class="app">
-		<header class="header">
-
-		</header>
+	<div class="main">
+	
+		<!-- <header class="header">
+	
+		</header> -->
 		<div class="container">
 			<div>hahahh</div>
 			<div>
-				<router-view></router-view>
+			
 			</div>
+			<router-view></router-view>
 		</div>
 	</div>
 </template>
+
 <style lang='sass'>
 
 </style>
 
 <script>
-
-export default {
-	mounted() {
-
-	},
-	data() {
-		return {
-
-		}
-	},
-	methods: {
+	import Login from './components/login.vue'
+	export default {
+		mounted() {
+	
+		},
+		data() {
+			return {
+	
+			}
+		},
+		methods: {},
+		components: {
+			"login": Login,
+	
+		},
 	}
-}
 </script>

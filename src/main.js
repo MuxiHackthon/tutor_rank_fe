@@ -1,16 +1,9 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import routes from './router-config'
+import router from './router-config'
 import App from './App.vue'
 
-const router = new VueRouter({
-	mode: 'history',
-	base: '/',
-	routes: routes.routes
-})
-
 new Vue({
-  router,
   el: '#app',
+  router,
   render: h => h(App)
 })
