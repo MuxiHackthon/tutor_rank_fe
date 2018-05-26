@@ -4,7 +4,7 @@
 			<div class="nav">
 				<!-- <div class="title_set flex"> -->
 					<div class="flex align_center">
-						<router-link to="/teacher/2" class="flex">
+						<router-link to="/list" class="flex">
 							<!-- <svg class="logo flex">
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
 							</svg> -->
@@ -12,7 +12,7 @@
 						</router-link>
 					</div>
 					<div class="icon_box flex">
-					<div class="icon">
+					<div class="icon" v-if="addtag">
 						<svg viewBox="0 0 34 34" class="flex back">
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#back"></use>
 						</svg>
@@ -44,11 +44,17 @@
 	import List from './components/list.vue'
 	export default {
 		mounted() {
-	
+			
+		},
+		watch: {
+			'$route' (to, from) {
+				this.addtag = this.$route.path=="/"?false:true
+			}
 		},
 		data() {
 			return {
-				valueA1:5
+				valueA1:5,
+				addtag:false
 			}
 		},
 		methods: {},

@@ -14,7 +14,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -27,7 +26,22 @@ export default {
       history.back();
     },
     setComment(){
-        console.log("haha")
+				fetch(`/api/teacher/${this.$route.params.id}`, {
+					method: 'POST',
+					headers: {
+            'Authorization': Cookie.getCookie("token"),
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+           score: this.score,
+           content: this.comment_text
+					})
+				}).then((res) => {
+          return res.json()
+        }).then(value => {
+          history.back();
+      })
     }
   },
 };
