@@ -12,18 +12,20 @@
             <button v-on:click="submit" class="change box_height btn_width login_margin">确定</button>
         </div>
 		<div v-for="item in listCnt" class="item" :key="item.id">
-            <div class="course space">
-                <img :src="item.photo" class="avatar">
-                <div class="list_content">
-                    <div class="info space">
-                        <span class="teacher">{{ item.name }}</span>
-                        <div class="likes flex">
-                            <div><vm-rate v-model="item.score" :allow-half="true" disabled></vm-rate> {{ item.score }}</div>
+            <router-link :to="{ name: 'teacher', params: { id: item.id }}">
+                <div class="course space">
+                    <img :src="item.photo" class="avatar">
+                    <div class="list_content">
+                        <div class="info space">
+                            <span class="teacher">{{ item.name }}</span>
+                            <div class="likes flex">
+                                <div><vm-rate v-model="item.score" :allow-half="true" disabled></vm-rate> {{ item.score }}</div>
+                            </div>
                         </div>
+                        <div class="list_title c_link">{{ item.direction }}</div>
                     </div>
-                    <div class="list_title c_link">{{ item.direction }}</div>
                 </div>
-            </div>
+            </router-link>
 		</div>
         <div class="mobile_page_row full_width">
             <button class="mobile_page_button mobile_left_button mobile_button_size" v-on:click="page_down">&lt;</button>
@@ -79,6 +81,7 @@ export default {
   mounted() {
     this.university = Cookie.getCookie("university") || "CCNU"
     this.fetchdata(1)
+    console.log(this.listCnt)
   }
 };
 </script>
