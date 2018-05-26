@@ -15,7 +15,7 @@
                 <use xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#username"></use>
               </svg>
         </div>
-        <userInput v-model.trim="username" class="inputbox transparent inline_block vertical_align"></userInput>
+        <userInput v-model.trim="userID" class="inputbox transparent inline_block vertical_align"></userInput>
       </div>
     </div>
     <div class="row">
@@ -27,23 +27,34 @@
         </div>
         <input v-model.trim="passwordInput" type="password" class="inputbox transparent inline_block vertical_align" placeholder="密码">
       </div>
-      <div v-if="this.failed" class="check inline_block fail tip_color min_font">密码不正确</div>
+      <div v-if="this.failed" class="check inline_block fail tip_color min_font">密码或验证码不正确</div>
     </div>
-    <button v-on:click="submit" class="change box_height full_width login_margin">登录</button>
+    <img v-if="this.img_required" :src="this.img_url" class="verify_img">
+    <div v-if="this.img_required" class="row flex">
+      <div class="box box_height transparent verify_box">
+        <input v-model.trim="verify" type="text" placeholder="验证码">
+      </div>
+    </div>
+    <button v-on:click="submit1" class="change box_height full_width login_margin" v-if="!this.img_required">登录</button>
+    <button v-on:click="submit2" class="change box_height full_width login_margin" v-if="this.img_required">登录</button>
   </div>
 </template>
 
 <script>
-  // import getCookie from '../getCookie'
-  import userInput from './userInput.vue'
-  import Fetch from "../fetch.js"
+  import Cookie from '../cookie.js';
+  import userInput from './userInput.vue';
+  import Fetch from "../fetch.js";
   export default {
     data() {
       return {
-        username: '',
+        userID: '',
         passwordInput: '',
         failed: false,
-        universities: [""]
+        universities: [""],
+        university: "华中师范大学",
+        img_url: "",
+        img_required: false,
+        verify: ""
       }
     },
     components: {
@@ -55,15 +66,41 @@
       })
     },
     methods: {
-      submit() {
-        Fetch.FetchData(url, "POST", {
-          // body
+      submit1() {
+        Fetch.FetchData("/api/universities/schema/", "POST", {
+          "university_name": this.university
         }).then(res => {
-          if (res !== null && res !== undefined) {
-            // 跳转
+          if(res.verify === 1) {
+            Fetch.FetchData("/api/universities/verify/", "POST", {
+              "university_name": this.university
+            }).then(res => {
+              this.img_url = res.verify_url,
+              this.img_required = true
+            })
           } else {
-            this.failed = true
+            Fetch.FetchData("/api/login/", "POST", {
+              "username": this.userID,  //大学学号
+              "password": this.userInput
+            }, function(){
+              this.failed = true
+            }).then(res => {
+              Cookie.setCookie("token", res.token);
+              Cookie.setCookie("school", this.university);
+            })
           }
+        })
+      },
+      submit2() {
+        Fetch.FetchData("/api/login/", "POST", {
+          "username": this.userID,  //大学学号
+          "password": this.userInput,
+          "verify": this.verify
+        },function(){
+          console.log("failes")
+          this.failed = true
+        }).then(res => {
+          Cookie.setCookie("token", res.token);
+          Cookie.setCookie("school", this.university);
         })
       }
     }
@@ -72,9 +109,11 @@
 
 <style lang="sass">
 @import "../scss/utility.scss";
+.flex {
+  displsy: flex;
+}
 .box_height {
-    height: 30px;
-   
+  height: 30px;
 }
 .first_row {
    margin-top: 100px;
@@ -205,4 +244,16 @@
   margin-left: 4px;
 }
 
+.verify_img {
+  width: 202px;
+  height: 50px;
+}
+
+.verify_box {
+  border: none;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
 </style>
