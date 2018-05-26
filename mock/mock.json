@@ -33,7 +33,7 @@
 		{
 			"name": "teachers",
 			"method" : "get",
-			"endpoint": "/api/teachers/",
+			"endpoint": "/api/teacher/ccnu/page/1",
 			"async": true
 		}
 	],
@@ -55,42 +55,45 @@
 		"login": {
 				"token": "token"
 		},
-		"teachers":[{
-			"tid":123,
-			"name":"lll",
-			"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
-			"direction": "hahah",
-			"score": 4.5
-		},{
-			"tid":124,
-			"name":"lll",
-			"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
-			"direction": "hahah",
-			"score": 4.5
-		},{
-			"tid":125,
-			"name":"lll",
-			"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
-			"direction": "hahah",
-			"score": 4.5
-		},{
-			"tid":126,
-			"name":"lll",
-			"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
-			"direction": "hahah",
-			"score": 4.5
-		},{
-			"tid":127,
-			"name":"lll",
-			"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
-			"direction": "hahah",
-			"score": 4.5
-		},{
-			"tid":128,
-			"name":"lll",
-			"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
-			"direction": "hahah",
-			"score": 4.5
-		}]
+		"teachers":{
+				"allpages":5,
+				"teachers":[{
+				"tid":123,
+				"name":"lll",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "hahah",
+				"score": 4.5
+			},{
+				"tid":124,
+				"name":"lll",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "hahah",
+				"score": 4.5
+			},{
+				"tid":125,
+				"name":"lll",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "hahah",
+				"score": 4.5
+			},{
+				"tid":126,
+				"name":"lll",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "hahah",
+				"score": 4.5
+			},{
+				"tid":127,
+				"name":"lll",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "hahah",
+				"score": 4.5
+			},{
+				"tid":128,
+				"name":"lll",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "hahah",
+				"score": 4.5
+			}]
+		}
 	}
 }

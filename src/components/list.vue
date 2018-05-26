@@ -1,5 +1,16 @@
 <template>
 	<div id="js_courses_list" class="list">
+        <div class="list_select_box">
+            <div class="list_row">
+                <div class="box box_height transparent">
+                    <span class="select_list">选择学校：</span>
+                    <select v-model="name">
+                        <option v-for="option in universities" :key="universities.indexOf(option)"  v-bind:value="option" class="univer">{{ option }}</option>
+                    </select>
+                </div>
+            </div>
+            <button v-on:click="submit" class="change box_height btn_width login_margin">确定</button>
+        </div>
 		<div v-for="item in listCnt" class="item" :key="item.id">
             <div class="course space">
                 <img :src="item.photo" class="avatar">
@@ -15,7 +26,7 @@
             </div>
 		</div>
         <div class="mobile_page_row full_width">
-            <button class="mobile_page_button mobile_button_size" v-on:click="page_down">&lt;</button>
+            <button class="mobile_page_button mobile_left_button mobile_button_size" v-on:click="page_down">&lt;</button>
             <span>{{current}}/{{total}}</span>
             <button class="mobile_right_button mobile_button_size" v-on:click="page_up"> > </button>
         </div>
@@ -30,8 +41,10 @@ export default {
     return {
         listCnt:[],
         university:"",
+        universities:["华中师范大学","武汉科技大学"],
         total:1,
-        current:1
+        current:1,
+        name:""
     };
   },
   methods: {
@@ -53,22 +66,38 @@ export default {
             this.total = res.allpages
             this.listCnt = res.teachers
         })
+    },
+    submit(){
+        if(this.name == "华中师范大学"){
+            this.university = "CCNU"
+        }else{
+            this.university = "WUST"
+        }
+        this.fetchdata(1)
     }
   },
   mounted() {
-    this.university = Cookie.getCookie("university")
+    this.university = Cookie.getCookie("university") || "CCNU"
     this.fetchdata(1)
   }
 };
 </script>
 
 <style lang='sass'>
-.flex {
-  display: flex;
-  align-items: center;
+.list_select_box{
+    display:flex;
+    justify-content:center;
+    padding-top:20px;
 }
 .list {
   width: 100%;
+}
+.list_row{
+    width:200px;
+    margin-right:20px;
+}
+.btn_width{
+    width:50px;
 }
 .course {
   font-size: 0;
@@ -153,10 +182,14 @@ export default {
 .mobile_right_button {
   margin-left: 20px;
 }
+.mobile_left_button{
+    margin-right: 20px;
+}
 .mobile_button_size {
   width: 16px;
   height: 16px;
   color: white;
   line-height: 16px;
+
 }
 </style>
