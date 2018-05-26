@@ -14,24 +14,50 @@
                 </div>
             </div>
 		</div>
+        <div class="mobile_page_row full_width">
+            <button class="mobile_page_button mobile_button_size" v-on:click="page_down">&lt;</button>
+            <span>{{current}}/{{total}}</span>
+            <button class="mobile_right_button mobile_button_size" v-on:click="page_up"> > </button>
+        </div>
 	</div>
 </template>
 
 <script>
 import FETCH from '../fetch.js'
+import Cookie from '../cookie.js'
 export default {
   data() {
     return {
-        listCnt:[]
+        listCnt:[],
+        university:"",
+        total:1,
+        current:1
     };
   },
-  methods: {},
+  methods: {
+    page_down(){
+        this.current--
+        if(this.current>0){
+            this.fetchdata(this.current)
+        }        
+    },
+    page_up(){
+        this.current++
+        if(this.current<=this.total){
+            this.fetchdata(this.current)
+        }  
+    },
+    fetchdata(page){
+        FETCH.FetchData(`/api/teacher/${this.university}/page/${page}/`, "GET")
+        .then(res => {
+            this.total = res.allpages
+            this.listCnt = res.teachers
+        })
+    }
+  },
   mounted() {
-    FETCH.FetchData("/api/teachers", "GET")
-    .then(res => {
-        this.listCnt = res
-        console.log(this.listCnt)
-    })
+    this.university = Cookie.getCookie("university")
+    this.fetchdata(1)
   }
 };
 </script>
@@ -118,11 +144,11 @@ export default {
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-top: 20px;
 }
 .mobile_page_button:hover,
 .mobile_right_button:hover {
-  background-color: yellow;
+  background-color:rgb(246,185,61);
 }
 .mobile_right_button {
   margin-left: 20px;
