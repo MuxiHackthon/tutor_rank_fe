@@ -51,7 +51,7 @@
         passwordInput: '',
         failed: false,
         universities: [""],
-        university: "华中师范大学",
+        university: "CCNU",
         img_url: "",
         img_required: false,
         verify: ""

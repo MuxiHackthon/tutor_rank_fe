@@ -7,6 +7,12 @@
 			"async": false
 		},
 		{
+			"name": "teacher_info",
+			"method": "get",
+			"endpoint": "/api/teacher/:id/info/page/:id/",
+			"async": true
+		},
+		{
 			"name": "getUniver",
 			"method":"get",
 			"endpoint": "/api/universities/",
@@ -42,7 +48,7 @@
 			"title": "second"
 		},
 		"getUniver": {
-			"universities":["华中师范大学", "武汉科技大学","武汉大学"]
+			"universities":["CCNU", "WUST"]
 		},
 		"schema": {
 				"username":"str",
@@ -91,6 +97,46 @@
 			"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
 			"direction": "hahah",
 			"score": 4.5
-		}]
+		}],
+		"teacher_info": {
+			"allpages": 2,
+    	"teacher":{
+        "tid": 2,
+        "name": "田媛",
+        "photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+        "direction": "心理学",
+        "score": 5
+    },
+    "comments": [
+        {
+          "score":4.5,
+          "content": "很好"
+				},
+				{
+          "score":4.5,
+          "content": "很好"
+				},
+				{
+          "score":4.5,
+          "content": "很好"
+				},
+				{
+          "score":4.5,
+          "content": "很好"
+				},
+				{
+          "score":4.5,
+          "content": "很好"
+				},
+				{
+          "score":4.5,
+          "content": "很好"
+				},
+				{
+          "score":4.5,
+          "content": "很好"
+				}
+    ]
+		}
 	}
 }
