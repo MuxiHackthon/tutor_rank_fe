@@ -4,11 +4,11 @@
 			<div class="nav">
 				<!-- <div class="title_set flex"> -->
 					<div class="flex align_center">
-						<router-link to="/teacher/2" class="flex">
-							<!-- <svg class="logo flex">
+						<router-link to="/" class="flex">
+							<svg class="app_logo">
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
-							</svg> -->
-							<div class="title">研究生导师评价</div>
+							</svg>
+							<div class="title">导师评价</div>
 						</router-link>
 					</div>
 					<div class="icon_box flex">
@@ -33,12 +33,6 @@
 	</div>
 </template>
 
-<style lang='sass'>
-.test{
-	color:red;
-}
-</style>
-
 <script>
 	import Login from './components/login.vue'
 	import List from './components/list.vue'
@@ -62,13 +56,12 @@
 
 <style lang="sass">
 @import "./scss/reset.scss";
+@import "./scss/utility.scss";
 .main {
 	height: 100%;
 	width: 100%;
 }
-.flex {
-  display: flex;
-}
+
 .align_center {
   align-items: center;
 }
@@ -103,6 +96,12 @@
 	margin: 0 20px;
 }
 .title {
-	margin-left: 20px;
+	margin-left: 10px;
+	height: 35px;
+  line-height: 35px;
+}
+.app_logo {
+	width: 35px;
+	height: 35px;
 }
 </style>

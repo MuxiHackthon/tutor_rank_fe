@@ -9,7 +9,7 @@
 		{
 			"name": "teacher_info",
 			"method": "get",
-			"endpoint": "/api/teacher/:id/info/page/:id/",
+			"endpoint": "/api/teacher/2/info/page/1/",
 			"async": true
 		},
 		{
@@ -102,8 +102,10 @@
 			"allpages": 2,
     	"teacher":{
         "tid": 2,
-        "name": "田媛",
-        "photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"name": "田媛",
+				"school": "CCNU",
+				"sex": 0,
+        "photo": "http://ourrzxc82.bkt.clouddn.com//frontend/jiwanying.jpeg",
         "direction": "心理学",
         "score": 5
     },

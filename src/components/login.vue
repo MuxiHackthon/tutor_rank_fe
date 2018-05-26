@@ -71,11 +71,17 @@
           "university_name": this.university
         }).then(res => {
           if(res.verify === 1) {
-            Fetch.FetchData("/api/universities/verify/", "POST", {
+            Fetch.FetchData("/api/universities/pre_verify/", "POST", {
               "university_name": this.university
             }).then(res => {
-              this.img_url = res.verify_url,
-              this.img_required = true
+              if(res.msg == "ok") {
+                Fetch.FetchData("/api/universities/verify/", "POST", {
+                  "university_name": this.university
+                }).then(res => {
+                  this.img_url = res.verify_url,
+                  this.img_required = true
+                })
+              }
             })
           } else {
             Fetch.FetchData("/api/login/", "POST", {
