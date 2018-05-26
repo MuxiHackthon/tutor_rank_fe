@@ -75,6 +75,6 @@ export default {
 }
 </script>
 <style lang="sass">
-@import
-.info_box
+@import "../scss/reset.scss";
+
 </style>
