@@ -5,12 +5,12 @@
       <div class="info_list">
         <div class="info_box_row flex">
           <div class="tea_sex" v-if="this.male">
-            <svg viewBox="0 0 200 200" class="sex_icon">
+            <svg viewBox="0 0 200 200">
               <use xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#male"></use>
             </svg> 
         </div>
         <div class="tea_sex" v-if="!this.male">
-          <svg viewBox="0 0 200 200" class="sex_icon">
+          <svg viewBox="0 0 200 200">
             <use xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#female"></use>
           </svg>
         </div>
@@ -53,13 +53,13 @@ export default {
       comments: [],
       t_id:2,
       page_num: 1,
-      page_sum: 5,
+      page_sum: 1,
       score: 4.5
     }
   },
   mounted() {
     this.t_id = window.location.pathname.split("/")[2];
-    Fetch.FetchData("/api/teacher/" + this.t_id + "/info/page/1", "GET").then(res => {
+    Fetch.FetchData("/api/teacher/" + this.t_id + "/info/page/1/", "GET").then(res => {
       this.page_sum = res.allpages,
       this.school = res.teacher.school,
       this.name = res.teacher.name,
@@ -67,7 +67,8 @@ export default {
       this.tea_avatar = res.teacher.photo,
       this.major = res.teacher.direction,
       this.score = res.teacher.score,
-      this.comments = res.comments
+      this.comments = res.comments,
+      this.year = res.teacher.birth
     })
   },
   page_up(page) {

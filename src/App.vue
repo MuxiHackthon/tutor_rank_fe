@@ -5,7 +5,7 @@
 				<!-- <div class="title_set flex"> -->
 					<div class="flex align_center">
 						<router-link to="/" class="flex">
-							<svg class="logo flex">
+							<svg class="app_logo">
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
 							</svg>
 							<div class="title">导师评价</div>

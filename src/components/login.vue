@@ -54,7 +54,8 @@
         university: "CCNU",
         img_url: "",
         img_required: false,
-        verify: ""
+        verify: "",
+        session: ""
       }
     },
     components: {
@@ -68,15 +69,15 @@
     methods: {
       submit1() {
         Fetch.FetchData("/api/universities/schema/", "POST", {
-          "university_name": this.university
+          university_name: this.university
         }).then(res => {
           if(res.verify === 1) {
             Fetch.FetchData("/api/universities/pre_verify/", "POST", {
-              "university_name": this.university
-            }).then(res => {
-              if(res.msg == "ok") {
+              university_name: this.university
+            }).then(response => {
+              if(response.msg == "ok") {
                 Fetch.FetchData("/api/universities/verify/", "POST", {
-                  "university_name": this.university
+                  university_name: this.university
                 }).then(res => {
                   this.img_url = res.verify_url,
                   this.img_required = true
@@ -85,11 +86,15 @@
             })
           } else {
             Fetch.FetchData("/api/login/", "POST", {
-              "username": this.userID,  //大学学号
-              "password": this.userInput
+              university_name: this.university,
+              login_info: {
+                username: this.userID,  //大学学号
+                password: this.passwordInput
+              }
             }, function(){
               this.failed = true
             }).then(res => {
+              this.$router.push("list")
               Cookie.setCookie("token", res.token);
               Cookie.setCookie("school", this.university);
             })
@@ -98,13 +103,17 @@
       },
       submit2() {
         Fetch.FetchData("/api/login/", "POST", {
-          "username": this.userID,  //大学学号
-          "password": this.userInput,
-          "verify": this.verify
+          university_name: this.university,
+          login_info: {
+            username: this.userID,  //大学学号
+            password: this.passwordInput,
+            verify: this.verify
+          }
         },function(){
           console.log("failes")
           this.failed = true
         }).then(res => {
+          this.$router.push("list")
           Cookie.setCookie("token", res.token);
           Cookie.setCookie("school", this.university);
         })

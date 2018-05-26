@@ -11,8 +11,8 @@
             </div>
             <button v-on:click="submit" class="change box_height btn_width login_margin">确定</button>
         </div>
-		<div v-for="item in listCnt" class="item" :key="item.id">
-            <router-link :to="{ name: 'teacher', params: { id: item.id }}">
+		<div v-for="item in listCnt" class="item" :key="item.tid">
+            <a @click="toTeacher(item.tid)">
                 <div class="course space">
                     <img :src="item.photo" class="avatar">
                     <div class="list_content">
@@ -25,7 +25,7 @@
                         <div class="list_title c_link">{{ item.direction }}</div>
                     </div>
                 </div>
-            </router-link>
+            </a>
 		</div>
         <div class="mobile_page_row full_width">
             <button class="mobile_page_button mobile_left_button mobile_button_size" v-on:click="page_down">&lt;</button>
@@ -63,7 +63,7 @@ export default {
         }  
     },
     fetchdata(page){
-        FETCH.FetchData(`/api/teacher/${this.university}/page/${page}/`, "GET")
+        FETCH.FetchData(`/api/teacher/${this.university.toLowerCase()}/page/${page}/`, "GET")
         .then(res => {
             this.total = res.allpages
             this.listCnt = res.teachers
@@ -76,6 +76,9 @@ export default {
             this.university = "WUST"
         }
         this.fetchdata(1)
+    },
+    toTeacher(id){
+        this.$router.push({path: `/teacher/${id}`})
     }
   },
   mounted() {
