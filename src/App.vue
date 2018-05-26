@@ -4,7 +4,7 @@
 			<div class="nav">
 				<!-- <div class="title_set flex"> -->
 					<div class="flex align_center">
-						<router-link to="/list" class="flex">
+						<router-link to="/" class="flex">
 							<!-- <svg class="logo flex">
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
 							</svg> -->
@@ -32,12 +32,6 @@
 		</div>
 	</div>
 </template>
-
-<style lang='sass'>
-.test{
-	color:red;
-}
-</style>
 
 <script>
 	import Login from './components/login.vue'
