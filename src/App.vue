@@ -26,9 +26,10 @@
 				</div>
 		</div>
 		<div class="content">
-		<div class="container">
-			<router-view></router-view>
-		</div>
+			<router-link to="/list">To list</router-link>
+			<div class="container">
+				<router-view></router-view>
+			</div>
 		</div>
 	</div>
 </template>

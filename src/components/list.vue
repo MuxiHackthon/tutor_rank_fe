@@ -3,14 +3,14 @@
 		<div v-for="item in listCnt" class="item" :key="item.id">
             <div class="course space">
                 <img :src="item.photo" class="avatar">
-                <div class="content">
+                <div class="list_content">
                     <div class="info space">
                         <span class="teacher">{{ item.name }}</span>
                         <div class="likes flex">
                             <div><vm-rate v-model="item.score" :allow-half="true" disabled></vm-rate> {{ item.score }}</div>
                         </div>
                     </div>
-                    <div class="title c_link">{{ item.direction }}</div>
+                    <div class="list_title c_link">{{ item.direction }}</div>
                 </div>
             </div>
 		</div>
@@ -27,7 +27,7 @@ export default {
   },
   methods: {},
   mounted() {
-    FETCH.FetchData("/api/v1.0/courses", "GET")
+    FETCH.FetchData("/api/teachers", "GET")
     .then(res => {
         this.listCnt = res
         console.log(this.listCnt)
@@ -64,18 +64,18 @@ export default {
   text-align: center;
 }
 .avatar,
-.content {
+.list_content {
   display: inline-block;
   vertical-align: top;
 }
-.content {
-  width: 260px;
+.list_content {
+  width: 276px;
 }
 .vm-rate{
     display:inline-block;
     vertical:center;
 }
-.title {
+.list_title {
     font-size:12px;
   width: 100%;
   color: #333;
@@ -111,5 +111,26 @@ export default {
 }
 .comments {
   margin-right: 16px;
+}
+.mobile_page_row {
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.mobile_page_button:hover,
+.mobile_right_button:hover {
+  background-color: yellow;
+}
+.mobile_right_button {
+  margin-left: 20px;
+}
+.mobile_button_size {
+  width: 16px;
+  height: 16px;
+  color: white;
+  line-height: 16px;
 }
 </style>
