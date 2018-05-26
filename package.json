@@ -55,6 +55,7 @@
     "scss-loader": "^0.0.1",
     "style-loader": "^0.13.2",
     "vue": "^2.1.0",
+    "vue-multiple-rate": "^1.1.0",
     "vue-router": "^2.0.3",
     "webpack": "^2.7.0",
     "webpack-merge": "^4.1.0"

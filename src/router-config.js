@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
-import Login from "./components/login.vue";
-
+import Login from './components/login.vue'
+import List from './components/list.vue'
 
 Vue.use(VueRouter);
 module.exports = new VueRouter({
@@ -11,5 +11,9 @@ module.exports = new VueRouter({
         name: "index",
         path: "/",
         component: Login
+    },{
+        name:"list",
+        path:"/list",
+        component: List
     }]
 })

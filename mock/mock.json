@@ -5,11 +5,60 @@
 			"endpoint": "/",
 			"template": "home",
 			"async": false
+		},
+		{
+			"name": "courses",
+			"endpoint": "/api/v1.0/courses",
+			"async": true
 		}
 	],
 	"data":{
 		"api.courses":{
 			"title": "second"
-		}
+		},
+		"courses": [
+			{
+				"tid":123,
+				"name":"刘震",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "Developmental Psychology",
+				"score": 4.5
+			},
+			{
+				"tid":124,
+				"name":"丁茜",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "Developmental Psychology",
+				"score": 4.6
+			},
+			{
+				"tid":125,
+				"name":"吴晓飞",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "Developmental Psychology",
+				"score": 5.0
+			},
+			{
+				"tid":126,
+				"name":"田甜",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "Physics",
+				"score": 3.0
+			},
+			{
+				"tid":127,
+				"name":"丁茜",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "Developmental Psychology",
+				"score": 4.6
+			},
+			{
+				"tid":128,
+				"name":"丁茜",
+				"photo": "https://avatars0.githubusercontent.com/u/14661192?s=460&v=4",
+				"direction": "Developmental Psychology",
+				"score": 4.6
+			}
+		]
 	}
 }
