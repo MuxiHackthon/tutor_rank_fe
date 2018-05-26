@@ -4,7 +4,7 @@
 			<div class="nav">
 				<!-- <div class="title_set flex"> -->
 					<div class="flex align_center">
-						<router-link to="/" class="flex">
+						<router-link to="/comment/1" class="flex">
 							<!-- <svg class="logo flex">
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo"></use>
 							</svg> -->
@@ -26,7 +26,6 @@
 				</div>
 		</div>
 		<div class="content">
-			<router-link to="/list">To list</router-link>
 			<div class="container">
 				<router-view></router-view>
 			</div>

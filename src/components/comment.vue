@@ -1,12 +1,13 @@
 <template>
 	<div class="new_comment">
 		<div class="new_comment_box">
-			<textarea class="comment_cont" placeholder="请从教学质量、课程内容、给分、考勤、期末考察方式等方面评价，欢迎长篇/优质的评论" v-model="comment_text"></textarea>
+			<textarea class="comment_cont" placeholder="留下你的评论吧" v-model="comment_text"></textarea>
 		</div>
 		<div class="com_btns">
 			<div class="com_btn com_btn_left" @click="backStep">返回</div>
 			<div class="com_btn com_btn_right" @click="setComment">提交</div>
 		</div>
+    </div>
 </template>
 
 <script>
@@ -56,16 +57,16 @@ export default {
   text-align: center;
   line-height: 36px;
   box-sizing: border-box;
-  border: 1px solid $_yellow;
+  border: 1px solid rgb(246,185,61);
   border-radius: 2px;
   font-size: 14px; /*px*/
 }
 .com_btn_left {
-  color: $_yellow;
+  color: rgb(246,185,61);
   margin-right: 18px;
 }
 .com_btn_right {
   color: #fff;
-  background: $_yellow;
+  background: rgb(246,185,61);
 }
 </style>
