@@ -3,6 +3,9 @@
 		<div class="new_comment_box">
 			<textarea class="comment_cont" placeholder="留下你的评论吧" v-model="comment_text"></textarea>
 		</div>
+        <div class="comment_rate">
+            <vm-rate v-model="score"></vm-rate>
+	    </div>
 		<div class="com_btns">
 			<div class="com_btn com_btn_left" @click="backStep">返回</div>
 			<div class="com_btn com_btn_right" @click="setComment">提交</div>
@@ -16,12 +19,16 @@ export default {
   data() {
     return {
       comment_text: "",
+      score:0
     };
   },
   methods: {
     backStep() {
       history.back();
     },
+    setComment(){
+        console.log("haha")
+    }
   },
 };
 </script>
@@ -31,6 +38,10 @@ export default {
   line-height: 14px;
   font-size: 0;
   padding-bottom: 20px;
+}
+.comment_rate{
+    margin-top:30px;
+    text-align:center;
 }
 .new_comment_box {
   width: 328px;

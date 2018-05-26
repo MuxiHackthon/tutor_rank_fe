@@ -39,7 +39,7 @@
 		{
 			"name": "teachers",
 			"method" : "get",
-			"endpoint": "/api/teachers/",
+			"endpoint": "/api/teacher/ccnu/page/1",
 			"async": true
 		}
 	],
