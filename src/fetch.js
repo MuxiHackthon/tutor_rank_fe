@@ -1,4 +1,3 @@
-import 'whatwg-fetch'
 export default {
     FetchData(url, method, body, callback) {
         if (method == "GET") {

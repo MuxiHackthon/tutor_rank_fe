@@ -43,7 +43,7 @@
         username: '',
         passwordInput: '',
         failed: false,
-        universities: ["华中师范大学"]
+        universities: [""]
       }
     },
     components: {
@@ -51,22 +51,21 @@
     },
     mounted() {
       Fetch.FetchData("/api/universities/", "GET").then(res => {
-        console.log(res)
         this.universities = res.universities
       })
     },
     methods: {
-      // submit() {
-      //   Fetch.FetchData(url, "POST", {
-      //     // body
-      //   }).then(res => {
-      //     if (res !== null && res !== undefined) {
-      //       // 跳转
-      //     } else {
-      //       this.failed = true
-      //     }
-      //   })
-      // }
+      submit() {
+        Fetch.FetchData(url, "POST", {
+          // body
+        }).then(res => {
+          if (res !== null && res !== undefined) {
+            // 跳转
+          } else {
+            this.failed = true
+          }
+        })
+      }
     }
   }
 </script>
