@@ -1,7 +1,8 @@
 <template>
   <div class="margin tea_container">
     <div class="info_box full_width">
-      <img class="tea_avatar" :src="tea_avatar">
+    <div class="img_box"><img class="tea_avatar" :src="tea_avatar">
+      <button @click="toComment" class="com_btn">评价</button></div>
       <div class="info_list">
         <div class="info_box_row flex">
           <div class="tea_sex" v-if="this.male">
@@ -71,6 +72,7 @@ export default {
       this.year = res.teacher.birth
     })
   },
+  methods: {
   page_up(page) {
     this.page_num++;
     this.getComments(this.page_num)
@@ -83,12 +85,25 @@ export default {
     Fetch.FetchData("/api/teacher/" + this.t_id + "/info/page/" + page).then(res => {
       this.comments = res.comments
     })
+  },
+  toComment() {
+    this.$router.push({path: `/comment/${this.t_id}/`})
+  }
   }
 }
 </script>
 <style lang="sass">
 @import "../scss/reset.scss";
 @import "../scss/utility.scss";
+.com_btn {
+  width: 40px;
+  height: 30px;
+  background-color: #df6b0f;
+  color: #ffffff;
+}
+.img_box{
+  width: 70px;
+}    
 .info_box {
   height: 140px;
   display: flex;

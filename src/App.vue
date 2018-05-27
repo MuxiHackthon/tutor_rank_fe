@@ -13,9 +13,11 @@
 					</div>
 					<div class="icon_box flex">
 					<div class="icon" v-if="addtag">
-						<svg viewBox="0 0 34 34" class="flex back">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#back"></use>
-						</svg>
+						<router-link to="/addteacher">
+							<svg viewBox="0 0 34 34">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#back"></use>
+							</svg>
+						</router-link>
 					</div>
 					<div class="icon icon_user">
 						<svg viewBox="0 0 34 34">

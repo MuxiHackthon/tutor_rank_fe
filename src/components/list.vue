@@ -42,7 +42,7 @@ export default {
   data() {
     return {
         listCnt:[],
-        university:"",
+        university:"华中师范大学",
         universities:["华中师范大学","武汉科技大学"],
         total:1,
         current:1,

@@ -26,6 +26,7 @@ export default {
       history.back();
     },
     setComment(){
+        console.log(this.$route.params.id)
 				fetch(`/api/teacher/${this.$route.params.id}`, {
 					method: 'POST',
 					headers: {
@@ -74,6 +75,9 @@ export default {
 .com_btns {
   width: 332px;
   margin: 50px auto 0;
+      display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .com_btn {
   display: inline-block;

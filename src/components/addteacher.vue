@@ -25,6 +25,10 @@
             <span>出生年份</span>
             <input class="info_input_cnt" v-model="this.birth" type="number">
         </div>
+        <div class="info_input">
+            <span>头像URL</span>
+            <input class="info_input_cnt" v-model="this.photo_url" type="text">
+        </div>
     </div>
     <button v-on:click="submit" class="change box_height addbtn login_margin">提交</button>
 </div>
@@ -56,8 +60,8 @@
                 teacher_name:this.teacher_name,
                 research_direction:this.research_direction,
                 photo_url:this.photo_url,
-                sex:this.sex,
-                birth:this.birth
+                sex: 1,
+                birth: 1979
             })
             }).then((res) => {
                 return res.json()
